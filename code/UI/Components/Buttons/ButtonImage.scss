@@ -1,0 +1,38 @@
+﻿ButtonImage {
+  font-family: Roboto, sans-serif;
+  font-size: 32px;
+  font-weight: normal;
+  color: #FFFFFF;
+  cursor: pointer;
+  letter-spacing: 1.2px;
+  width: 100%;
+  display: flex;
+  text-transform: uppercase;
+  position: relative;
+  align-items: flex-end;
+  transition: all 1s ease-out;
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: 20;
+  text-align: center;
+  
+  textpanel {
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    font-weight: bold;
+  }
+  
+  &.isAnimated {
+    opacity: 0.8;
+    
+    &:hover {
+      opacity: 1;
+      border: 1px solid white;
+    }
+  }
+
+  &.HasImage {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+}

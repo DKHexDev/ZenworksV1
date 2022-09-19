@@ -1,0 +1,90 @@
+﻿InventoryGrid {
+  height: auto;
+  width: auto;
+  margin: 10px;
+  border: 0.25px solid #828483;
+  z-index: 100;
+  position: relative;
+  
+  .canvas {
+    width: auto;
+    height: auto;
+    z-index: 100;
+  }
+}
+
+InventorySquare {
+  height: 100%;
+  width: 100%;
+  border: 0.5px solid #828483;
+  display: flex;
+  z-index: 100;
+  margin: 1px;
+  transition: all 1s ease-in-out;
+  
+  &.EnableAnimation {
+    transform: scale(1) rotate(0deg);
+    
+    &:intro {
+      transform: scale(0) rotate(-180deg);
+    }
+
+    &:outro {
+      transform: scale(0) rotate(-180deg);
+    }
+  }
+  
+  &.HasItem {
+    background-color: rgba(0, 0, 0, 0.7);
+    cursor: pointer;
+  }
+  
+  .ScenePanel {
+    width: auto;
+    height: auto;
+    flex-grow: 1;
+    z-index: 105;
+    transition: all 2.3s ease-in-out;
+    transform: scale(1);
+    
+    &:intro {
+      transform: scale(0);
+    }
+  }
+  
+  .StackableText {
+    position: absolute;
+    right: 3px;
+    bottom: 3px;
+    color: #FFFFFF;
+    font-family: Roboto, sans-serif;
+    font-size: 18px;
+    z-index: 10;
+  }
+}
+
+InventorySquareTooltip {
+  height: auto;
+  width: auto;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  z-index: 1000000;
+  
+  Button {
+    padding: 10px;
+    color: #FFFFFF;
+    font-family: Roboto, sans-serif;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    font-size: 18px;
+    background-color: rgba(0, 0, 0, 0.7);
+    transition: all 0.2s ease-in-out;
+    
+    &:hover {
+      background-color: #FFF;
+      color: #000;
+    }
+  }
+}

@@ -1,0 +1,195 @@
+MainMenu {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  z-index: 200;
+  top: 0;
+  left: 0;
+  right: 0;
+  pointer-events: all;
+  background-color: rgba(47, 37, 46, 0.9);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all 0.7s ease-in-out;
+  transform: translateX(0);
+
+  
+  /*.Container {
+    transition: all 2s ease-in-out;
+    width: auto;
+    height: auto;
+    min-height: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 10px;
+    border-left: 2px solid white;
+    position: relative;
+    
+    .Header {
+      background-color: rgba(0, 0, 0, 0.3);
+      width: 100%;
+      flex-grow: 1;
+      padding: 5px 10px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+
+      .Avatar {
+        height: 64px;
+        width: auto;
+        border-radius: 100%;
+        margin-right: 10px;
+      }
+
+      .Col {
+        display: flex;
+        flex-direction: column;
+        height: auto;
+        width: auto;
+        
+        .SteamName, .SteamId {
+          color: white;
+          font-family: Roboto, sans-serif;
+          font-size: 24px;
+          letter-spacing: 1.2px;
+          text-transform: uppercase;
+        }
+      }
+
+      .Ping {
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        color: white;
+        font-family: Roboto, sans-serif;
+        font-size: 18px;
+      }
+    }
+    
+    button {
+      font-family: Roboto, sans-serif;
+      font-size: 32px;
+      font-weight: normal;
+      color: #FFFFFF;
+      cursor: pointer;
+      letter-spacing: 1.2px;
+      width: 100%;
+      transition: all 1s ease-out;
+      display: flex;
+      margin-bottom: 10px;
+      background-size: 500%;
+      background-color: rgba(0, 0, 0, 0.3);
+      padding: 5px 10px;
+      text-transform: uppercase;
+      
+      &:last-child {
+        margin: 0px;
+      }
+      
+      &:hover {
+        background: linear-gradient(to left, white 25%, rgba(255, 255, 255, 0.5) 50%, transparent 100%);
+        background-size: auto;
+        background-position: right;
+      }
+    }
+  }*/
+  
+  .Content {
+    width: auto;
+    flex-grow: 1;
+    height: 80%;
+    margin: 0px 10px;
+    overflow: hidden;
+    position: relative;
+  }
+}
+
+
+
+
+MainMenuHeader {
+  height: 8%;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 5px;
+  
+  .Profil {
+    height: auto;
+    width: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    
+    .Avatar {
+      height: 100%;
+      width: auto;
+      aspect-ratio: 1;
+    }
+    
+    .Infos {
+      margin-left: 10px;
+      font-family: Roboto, sans-serif;
+      color: #FFFFFF;
+      font-size: 24px;
+      letter-spacing: 1.2px;
+      font-weight: normal;
+      font-style: italic;
+      display: flex;
+      height: auto;
+      width: auto;
+      flex-direction: column;
+      
+      label:last-child {
+          font-size: 18px;
+      }
+    }
+  }
+}
+
+MainMenuContent {
+  flex-grow: 1;
+  height: auto;
+  width: auto;
+}
+
+MainMenuFooter {
+  height: 5%;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  background-color: rgba(0, 0, 0, 0.6);
+
+  .FooterBtn {
+    height: 100%;
+    width: 50%;
+    color: #FFF;
+    font-family: Roboto, sans-serif;
+    font-weight: normal;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    font-size: 28px;
+    display: flex;
+    pointer-events: all;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.4s ease-in-out;
+    background-color: rgba(0, 0, 0, 0.2);
+    
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+    
+    &.hidden {
+      display: none;
+    }
+  }
+}

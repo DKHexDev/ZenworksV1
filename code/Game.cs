@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text.Json;
 using System.Threading.Tasks;
 using ZenWorks.Data.Modals;
 using ZenWorks.Entities;
@@ -37,16 +38,19 @@ namespace ZenWorks
 		{
 			base.ClientJoined( client );
 
-			DataManager.SaveClient( client );
+			if ( IsServer )
+			{
+				DataManager.SaveClient( client );
+				client.SetValue( "Characters", JsonSerializer.Serialize( DataManager.GetCharacters( client ) ) );
+			}
+				
 		}
-		
-		
 
 		public override void ClientDisconnect( Client cl, NetworkDisconnectionReason reason )
 		{
 			base.ClientDisconnect( cl, reason );
 			
-			if ( cl.Pawn != null && cl.Pawn is Character character )
+			if ( IsServer && cl.Pawn != null && cl.Pawn is Character character  )
 				character.Save();
 			
 			DataManager.SaveClient( cl );

@@ -1,24 +1,32 @@
-﻿using Sandbox;
+﻿using System;
+using System.Collections.Generic;
+using System.Runtime.CompilerServices;
+using System.Text.Json;
+using Sandbox;
 using Sandbox.UI;
 using Sandbox.UI.Tests;
+using ZenWorks.Data.Modals;
 using ZenWorks.Factions;
 using ZenWorks.UI.Components;
 using ZenWorks.UI.Components.Buttons;
 
 namespace ZenWorks.UI.MainMenus.Pages
 {
-	[NavigatorTarget("/mainmenu/load")]
-	public class Load : Panel
+	[NavigatorTarget( "/mainmenu/load" )]
+	public partial class Load : Panel
 	{
-		VirtualScrollPanel Canvas;
-		
+		public static Load Current { get; private set; }
+
+		public VirtualScrollPanel Canvas;
+
 		public Load()
 		{
+			Current = this;
 			StyleSheet.Load( "/UI/MainMenus/Pages/Pages.scss" );
-			
+
 			var container = Add.Panel( "Container" );
 			container.AddChild( out Canvas, "Canvas" );
-			
+
 			Canvas.Layout.ItemWidth = Length.Percent( 33.33f ).GetValueOrDefault();
 			Canvas.Layout.ItemHeight = Length.Percent( 50f ).GetValueOrDefault();
 			Canvas.Layout.Columns = 3;
@@ -30,6 +38,12 @@ namespace ZenWorks.UI.MainMenus.Pages
 			};
 		}
 
+		public override void OnDeleted()
+		{
+			base.OnDeleted();
+			Current = null;
+		}
+
 		public override void Tick()
 		{
 			base.Tick();
@@ -37,17 +51,21 @@ namespace ZenWorks.UI.MainMenus.Pages
 			var client = Local.Client;
 			if ( client == null ) return;
 
-			var characters = DataManager.GetCharacters( Local.Client );
+			var characters =
+				JsonSerializer.Deserialize<Dictionary<int, CharacterData>>(
+					client.GetValue<string>( "Characters", null ) );
 			if ( characters == null ) return;
 
 			if ( characters.Count == Canvas.Data.Count ) return;
-			
+
+			Canvas.Data.Clear();
+
 			foreach ( var data in characters )
 			{
 				var faction = Faction.GetFaction( data.Value.Faction );
 				Canvas.Data.Add( new ButtonImage( data.Value.Name, () =>
 				{
-					ConsoleSystem.Run( "zw_char_load", data.Value.IndexData );
+					ConsoleSystem.Run( "zw_char_load", data.Key );
 					MainMenu.Current.Delete();
 				}, faction.Image, true ) );
 			}

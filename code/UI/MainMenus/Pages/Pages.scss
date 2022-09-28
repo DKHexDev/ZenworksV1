@@ -1,16 +1,16 @@
-﻿Home, Load {
+﻿Home, Load, Create {
   display: flex;
   transition: all 2s ease-out;
   transform: translateX(0px);
-  
+
   &:intro {
     transform: translateX(100vw);
   }
-  
+
   &:outro {
     transform: translateX(-100vw);
   }
-  
+
   &.hidden {
     display: none;
   }
@@ -25,13 +25,13 @@ Home {
   position: relative;
   justify-content: center;
   align-items: center;
-  
+
   .Container {
     height: 90%;
     width: 90%;
     display: flex;
     position: relative;
-    
+
     .Canvas {
       flex-wrap: wrap;
       width: auto;
@@ -58,13 +58,13 @@ Load {
   position: relative;
   justify-content: center;
   align-items: center;
-  
+
   .Container {
     height: 90%;
     width: 90%;
     display: flex;
     position: relative;
-    
+
     .Canvas {
       flex-wrap: wrap;
       width: auto;
@@ -72,7 +72,7 @@ Load {
       flex-grow: 1;
       min-height: 100%;
       overflow: scroll;
-      
+
       ButtonImage {
         margin: 5px;
       }
@@ -80,3 +80,93 @@ Load {
   }
 }
 
+Create {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  flex-grow: 1;
+
+  .Title {
+    width: 90%;
+    font-family: Roboto, sans-serif;
+    text-transform: uppercase;
+    color: #FFF;
+    letter-spacing: 1.2px;
+    border-bottom: 1px solid #FFF;
+    font-size: 32px;
+    padding: 5px 5px;
+  }
+  
+  .Container {
+    height: 90%;
+    width: 90%;
+    display: flex;
+    position: relative;
+
+    CreateStepOne {
+      height: 100%;
+      width: 100%;
+      flex-grow: 1;
+
+      .Canvas {
+        flex-wrap: wrap;
+        width: auto;
+        height: auto;
+        flex-grow: 1;
+        min-height: 100%;
+        overflow: scroll;
+        justify-content: space-between;
+        padding: 10px 0px;
+      }
+
+      ButtonImage {
+        margin: 10px;
+      }
+    }
+
+    CreateStepTwo {
+      height: 100%;
+      width: 100%;
+      flex-grow: 1;
+
+      .Container {
+        height: 90%;
+        width: 90%;
+        display: flex;
+        justify-content: center;
+        position: relative;
+        padding: 10px;
+        
+        .Cover {
+          height: 100%;
+          width: 30%;
+          background-repeat: no-repeat;
+          background-size: cover;
+          background-position: center;
+        }
+        
+        .Form {
+          width: 50%;
+          height: 100%;
+          background-color: rgba(0, 0, 0, 0.5);
+        }
+      }
+    }
+
+    .Form {
+      width: 50%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+
+      .Field {
+        width: 100%;
+        height: auto;
+      }
+    }
+  }
+}

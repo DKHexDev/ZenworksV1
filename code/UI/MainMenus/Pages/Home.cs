@@ -29,7 +29,7 @@ namespace ZenWorks.UI.MainMenus.Pages
 			};
 
 			Canvas.Data.Add( new ButtonImage( "Créer un personnage",
-				() => (Parent as NavigatorPanel)?.Navigate( "/mainmenu/create/step1" ), "/ui/backgrounds/play.jpg", true ) );
+				() => (Parent as NavigatorPanel)?.Navigate( "/mainmenu/create?step=1" ), "/ui/backgrounds/play.jpg", true ) );
 			
 			Canvas.Data.Add( new ButtonImage( "Charger un personnage", 
 				() => (Parent as NavigatorPanel)?.Navigate( "/mainmenu/load" ), "/ui/backgrounds/folder.jpg" ) );

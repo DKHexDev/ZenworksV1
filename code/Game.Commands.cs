@@ -387,12 +387,19 @@ namespace ZenWorks
 		public static void ZwCharLoad( int index )
 		{
 			CharacterData data = new CharacterData();
-			
+
 			var client = ConsoleSystem.Caller;
 			if ( client == null ) return;
 
 			if ( client.Pawn != null && client.Pawn is Character currentCharacter )
 			{
+				if ( currentCharacter.IndexData == index )
+				{
+					RPCs.ClientNotify( To.Single( client ),
+						"Vous utiliser déjà ce personnage !", 10f, "warning.png" );
+					return;
+				}
+				
 				currentCharacter.Save();
 				currentCharacter.Delete();
 				client.Pawn = null;
@@ -401,23 +408,26 @@ namespace ZenWorks
 			var characters = DataManager.GetCharacters( client );
 			if ( characters == null )
 			{
-				RPCs.ClientNotify( To.Single( client ), "Un problème est survenue, impossible de récupérer vos personnages !", 10f, "warning.png" );
+				RPCs.ClientNotify( To.Single( client ),
+					"Un problème est survenue, impossible de récupérer vos personnages !", 10f, "warning.png" );
 				return;
 			}
 
 			if ( !characters.ContainsKey( index ) )
 			{
-				RPCs.ClientNotify( To.Single( client ), "Un problème est survenue, le personnage n'a pas été trouvé !", 10f, "warning.png" );
+				RPCs.ClientNotify( To.Single( client ), "Un problème est survenue, le personnage n'a pas été trouvé !",
+					10f, "warning.png" );
 				return;
 			}
 
 			data = characters[index];
-			
+
 			var character = new Character( data );
 			client.Pawn = character;
 
-			character.Notify( "Zenworks est en cours de développement, des bugs peuvent être présents.", 20f, "warning.png", null );
-			
+			character.Notify( "Zenworks est en cours de développement, des bugs peuvent être présents.", 20f,
+				"warning.png", null );
+
 			// Get all of the spawnpoints
 			var spawnpoints = Entity.All.OfType<SpawnPoint>();
 

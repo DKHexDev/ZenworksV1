@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Text.Json;
 using Sandbox;
 using ZenWorks.Data.Modals;
 
@@ -72,6 +73,8 @@ namespace ZenWorks
 			else currentData.Characters.Add( currentData.Characters.Count + 1, data );
 			
 			FileSystem.Data.CreateSubSystem( "/players/" ).WriteJson( $"{client.PlayerId}.json", currentData );
+			
+			client.SetValue( "Characters", JsonSerializer.Serialize( GetCharacters( client ) ) );
 		}	
 	}
 }

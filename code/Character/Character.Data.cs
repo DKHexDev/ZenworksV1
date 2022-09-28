@@ -7,7 +7,7 @@ namespace ZenWorks
 {
 	public partial class Character
 	{
-		protected int IndexData { get; set; } = -1;
+		public int IndexData { get; private set; } = -1;
 		
 		public void Save()
 		{
